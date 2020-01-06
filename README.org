@@ -1,0 +1,26 @@
+:+TITLE: docker-yaskkserv2
+
+* Usage
+** get image
+
+fetch from dockerhub:
+
+#+BEGIN_SRC shell
+docker pull lurdan/yaskkserv2
+#+END_SRC
+
+or build:
+
+#+BEGIN_SRC shell
+./util.sh build
+#+END_SRC
+
+** create dictionary
+   #+BEGIN_SRC shell
+./util.sh dic L jinmei geo station propernoun china_taiwan
+   #+END_SRC
+
+** run yaskkserv2
+   #+BEGIN_SRC shell
+docker-compose up -d
+   #+END_SRC

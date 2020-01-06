@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  yaskkserv2:
+    image: lurdan/yaskkserv2
+    container_name: yaskkserv2
+    restart: unless-stopped
+    volumes:
+    - .:/data
+    ports:
+      - "1178:1178"
