@@ -1,9 +1,11 @@
-:+TITLE: docker-yaskkserv2
+#+TITLE: docker-yaskkserv2
+
+build/run [[https://github.com/wachikun/yaskkserv2][yaskkserv2]] in docker.
 
 * Usage
 ** get image
 
-fetch from dockerhub:
+fetch from [[https://hub.docker.com/r/lurdan/yaskkserv2][dockerhub]]:
 
 #+BEGIN_SRC shell
 docker pull lurdan/yaskkserv2
