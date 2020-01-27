@@ -6,7 +6,7 @@ _build() {
 }
 
 _dic() {
-  local DICS=$*
+  local DICS="$*"
   local DIC_FILES
 
   for DIC in $DICS
@@ -17,4 +17,4 @@ _dic() {
   docker run -it --rm -v $PWD:/data lurdan/yaskkserv2 /usr/local/bin/yaskkserv2_make_dictionary --dictionary-filename=dictionary.yaskkserv2 ${DIC_FILES}
 }
 
-_$1
+_$*
