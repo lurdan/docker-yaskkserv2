@@ -1,8 +1,10 @@
 #!/bin/sh
 
 _build() {
+  local TAG="${1:-lurdan/yaskkserv2}"
+
   git clone https://github.com/wachikun/yaskkserv2
-  docker build -t lurdan/yaskkserv2 .
+  docker build -t ${TAG} .
 }
 
 _dic() {

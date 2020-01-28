@@ -9,12 +9,13 @@ on:
   release:
     types: [published]
   pull_request:
-    types: [opened, synchronize]                                                                                                                                                                                                                                paths-ignore:
+    types: [opened, synchronize]
+    paths-ignore:
     - '**.org'
 
 env:
   DOCKER_BASE_NAME: docker.pkg.github.com/${{ github.repository }}/yaskkserv2
-  DOCKER_HUB_BASE_NAME: ${{ github.repository }}/yaskkserv2
+  DOCKER_HUB_BASE_NAME: lurdan/yaskkserv2
 
 jobs:
   hadolint:
@@ -48,7 +49,7 @@ jobs:
 
     - name: build and check
       run: |
-        docker build -t "${PKG_TAG}"
+        ./util.sh build "${PKG_TAG}"
         docker tag "${PKG_TAG}" "${HUB_TAG}"
         docker run --rm ${PKG_TAG} /usr/local/bin/yaskkserv2 --version
         docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
