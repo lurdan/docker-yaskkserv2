@@ -1,5 +1,10 @@
 #!/bin/sh
 
+_clean() {
+  rm -rf yaskkserv2
+  rm dictionary.yaskkserv2
+}
+
 _build() {
   local TAG="${1:-lurdan/yaskkserv2}"
 
