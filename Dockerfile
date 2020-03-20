@@ -14,4 +14,4 @@ RUN apk add --no-cache libstdc++ openssl
 COPY --from=builder /yaskkserv2_build/target/release/yaskkserv2 /yaskkserv2_build/target/release/yaskkserv2_make_dictionary /usr/local/bin/
 WORKDIR /data
 
-CMD ["/usr/local/bin/yaskkserv2", "--no-daemonize", "--google-cache-filename=/data/yaskkserv2.cache", "/data/dictionary.yaskkserv2"]
+CMD ["/usr/local/bin/yaskkserv2", "--no-daemonize", "--config-filename=/data/yaskkserv2.conf" ]
