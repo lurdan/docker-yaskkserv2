@@ -9,7 +9,14 @@ _build() {
   local TAG="${1:-lurdan/yaskkserv2}"
 
   git clone https://github.com/wachikun/yaskkserv2
-  docker build -t ${TAG} .
+
+  if [ -e "${HOME}/.docker/cli-plugins/docker-buildx" ];
+  then
+    docker run -it --rm --privileged tonistiigi/binfmt --install all
+    docker buildx build --platform linux/arm/v7,linux/arm64,linux/amd64 -t ${TAG} --push .
+  else
+    docker build -t ${TAG} .
+  fi
 }
 
 _dic() {
