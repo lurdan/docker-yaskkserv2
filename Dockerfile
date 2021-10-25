@@ -1,4 +1,4 @@
-FROM rust:1.50 AS builder
+FROM rust:1.56 AS builder
 ENV RUST_BACKTRACE=1
 RUN USER=root cargo new yaskkserv2_build
 COPY yaskkserv2/Cargo.toml yaskkserv2/Cargo.lock /yaskkserv2_build/
