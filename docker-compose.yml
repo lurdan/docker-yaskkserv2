@@ -8,4 +8,4 @@ services:
     volumes:
     - .:/data
     ports:
-      - "1178:1178"
+    - "1178:1178"
