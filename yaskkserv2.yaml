@@ -1,0 +1,51 @@
+apiVersion: v1
+data:
+  yaskkserv2.conf: |
+    dictionary = dictionary.yaskkserv2
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: configmap-yaskkserv2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yaskkserv2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yaskkserv2
+  template:
+    metadata:
+      labels:
+        app: yaskkserv2
+    spec:
+      containers:
+      - image: lurdan/yaskkserv2
+        name: yaskkserv2
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 1178
+        volumeMounts:
+        - name: yaskkserv2-config
+          mountPath: /config
+      volumes:
+      - name: yaskkserv2-config
+        configMap:
+          name: configmap-yaskkserv2
+          items:
+          - key: yaskkserv2.conf
+            path: yaskkserv2.conf
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: yaskkserv2
+spec:
+  ports:
+  - port: 1178
+  selector:
+    app: yaskkserv2
+  type: LoadBalancer
+  loadBalancerIP: nnn.nnn.nnn.nnn
