@@ -53,7 +53,7 @@ jobs:
         docker tag "${PKG_TAG}" "${HUB_TAG}"
         docker run --rm ${PKG_TAG} /usr/local/bin/yaskkserv2 --version
         docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-        -v ${HOME}/.cache:/root/.cache aquasec/trivy:latest --exit-code 1 ${PKG_TAG}
+        -v ${HOME}/.cache:/root/.cache aquasec/trivy:latest image --exit-code 1 ${PKG_TAG}
 
     - name: push to registry
       if: github.event_name != 'pull_request'
