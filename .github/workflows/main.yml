@@ -44,8 +44,8 @@ jobs:
         else
           export TAG_NAME="latest"
         fi
-        echo "::set-env name=PKG_TAG::${DOCKER_BASE_NAME}:${TAG_NAME}"
-        echo "::set-env name=HUB_TAG::${DOCKER_HUB_BASE_NAME}:${TAG_NAME}"
+        echo "PKG_TAG=${DOCKER_BASE_NAME}:${TAG_NAME}" >> $GITHUB_ENV
+        echo "HUB_TAG=${DOCKER_HUB_BASE_NAME}:${TAG_NAME}" >> $GITHUB_ENV
 
     - name: build and check
       run: |
