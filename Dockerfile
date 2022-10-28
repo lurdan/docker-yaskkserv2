@@ -3,8 +3,7 @@ ENV RUST_BACKTRACE=1
 RUN USER=root cargo new yaskkserv2_build
 COPY yaskkserv2/Cargo.toml yaskkserv2/Cargo.lock /yaskkserv2_build/
 WORKDIR /yaskkserv2_build
-RUN cargo build --release
-RUN rm src/*.rs
+RUN cargo build --release && rm src/*.rs
 COPY yaskkserv2/src ./src
 RUN cargo build --release
 COPY util.sh /yaskkserv2_build/
